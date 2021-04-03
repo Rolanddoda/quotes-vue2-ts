@@ -1,37 +1,35 @@
 <template>
   <div id="app">
-    <SingleQuote v-for="quote of quotes" :key="quote.id" :quote="quote" />
+    <section class="new-quote">
+      <b-button icon-right="plus" type="is-primary">New Quote | </b-button>
+    </section>
+
+    <QuotesWrapper />
   </div>
 </template>
 
 <script lang="ts">
-import * as apiTo from "@/api";
 // Libraries
 import { Component, Vue } from "vue-property-decorator";
-// Types
-import { Quote } from "@/types/quote";
 // Components
-import SingleQuote from "@/components/SingleQuote.vue";
+import QuotesWrapper from "@/components/QuotesWrapper.vue";
 
 @Component({
   components: {
-    SingleQuote,
+    QuotesWrapper,
   },
 })
-export default class App extends Vue {
-  quotes: Quote[] = [];
-
-  created(): void {
-    apiTo.GET_QUOTES().then(({ data }) => (this.quotes = data));
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss" scoped>
 #app {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
-  gap: 25px;
   padding: 25px;
+
+  .new-quote {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 </style>
