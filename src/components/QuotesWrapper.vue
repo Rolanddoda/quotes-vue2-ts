@@ -1,11 +1,14 @@
 <template>
   <div class="quotes-wrapper">
-    <SingleQuote v-for="quote of quotes" :key="quote.id" :quote="quote" />
+    <div class="quotes" v-if="quotes">
+      <SingleQuote v-for="quote of quotes" :key="quote.id" :quote="quote" />
+    </div>
+
+    <div v-else class="loading">Loading...</div>
   </div>
 </template>
 
 <script lang="ts">
-import * as apiTo from "@/api";
 // Libraries
 import { Component, Vue } from "vue-property-decorator";
 // Types
@@ -19,10 +22,12 @@ import SingleQuote from "@/components/SingleQuote.vue";
   },
 })
 export default class QuotesWrapper extends Vue {
-  quotes: Quote[] = [];
+  get quotes(): Quote[] | null {
+    return this.$store.state.quotes;
+  }
 
   created(): void {
-    apiTo.GET_QUOTES().then(({ data }) => (this.quotes = data));
+    this.$store.dispatch("fetchQuotes");
   }
 }
 </script>
@@ -31,8 +36,15 @@ export default class QuotesWrapper extends Vue {
 .quotes-wrapper {
   --size: 250px;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, var(--size));
-  gap: 25px;
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, var(--size));
+    gap: 25px;
+  }
+
+  .loading {
+    display: flex;
+    place-items: center;
+  }
 }
 </style>
