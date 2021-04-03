@@ -39,7 +39,7 @@
 
 <script lang="ts">
 // Libraries
-import { Component, Prop, VModel, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, VModel, Vue } from "vue-property-decorator";
 // Types
 import { Quote } from "@/types/quote";
 type Mode = "create" | "update";
@@ -69,6 +69,11 @@ export default class CreateOrUpdateModal extends Vue {
 
   get doesValidationPass(): boolean {
     return this.quoteModel.author.trim() && this.quoteModel.quote.trim();
+  }
+
+  @Watch("value")
+  valueChanged(newVal: boolean): void {
+    if (newVal) this.quoteModel = { ...this.quote };
   }
 
   save(): void {
