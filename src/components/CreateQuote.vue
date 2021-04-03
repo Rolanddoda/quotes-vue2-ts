@@ -1,6 +1,6 @@
 <template>
   <div class="create-quote">
-    <CreateOrUpdateModal v-model="showModal" />
+    <CreateOrUpdateModal v-model="showModal" mode="create" />
     <b-button icon-right="plus" type="is-primary" @click="showModal = true">
       New Quote |
     </b-button>

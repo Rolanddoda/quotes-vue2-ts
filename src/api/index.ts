@@ -29,12 +29,10 @@ export const GET_QUOTE = (quoteId: string): Promise<AxiosResponse<Quote>> =>
 
 /**
  * @description PATCH /quotes/:id
- * @returns {AxiosResponse} data: Quote
+ * @returns {AxiosResponse} data: "Ok"
  */
-export const MODIFY_QUOTE = (
-  quoteId: string,
-  quote: Quote
-): Promise<AxiosResponse<string>> => request.patch(`/quotes/${quoteId}`, quote);
+export const MODIFY_QUOTE = (quote: Quote): Promise<AxiosResponse<string>> =>
+  request.patch(`/quotes/${quote.id}`, quote);
 
 /**
  * @description DELETE /quotes/:id

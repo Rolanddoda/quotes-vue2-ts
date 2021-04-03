@@ -31,5 +31,17 @@ export default new Vuex.Store({
     fetchQuotes({ commit }) {
       return apiTo.GET_QUOTES().then(({ data }) => commit("setQuotes", data));
     },
+
+    createQuote({ commit }, quote: Quote) {
+      return apiTo
+        .CREATE_QUOTE(quote)
+        .then(({ data }) => commit("addQuote", { ...quote, id: data.id }));
+    },
+
+    updateQuote({ commit }, quote: Quote) {
+      return apiTo
+        .MODIFY_QUOTE(quote)
+        .then(() => commit("updateQuote", { ...quote }));
+    },
   },
 });
