@@ -21,8 +21,6 @@ export default class SingleQuote extends Vue {
 
 <style lang="scss" scoped>
 .single-quote {
-  --size: 300px;
-
   width: var(--size);
   height: var(--size);
   display: grid;
