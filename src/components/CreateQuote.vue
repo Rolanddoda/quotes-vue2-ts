@@ -1,15 +1,25 @@
 <template>
   <div class="create-quote">
-    <b-button icon-right="plus" type="is-primary">New Quote | </b-button>
+    <CreateOrUpdateModal v-model="showModal" />
+    <b-button icon-right="plus" type="is-primary" @click="showModal = true">
+      New Quote |
+    </b-button>
   </div>
 </template>
 
 <script lang="ts">
 // Libraries
 import { Component, Vue } from "vue-property-decorator";
+import CreateOrUpdateModal from "@/components/CreateOrUpdateModal.vue";
 
-@Component()
-export default class CreateQuote extends Vue {}
+@Component({
+  components: {
+    CreateOrUpdateModal,
+  },
+})
+export default class CreateQuote extends Vue {
+  showModal = false;
+}
 </script>
 
 <style lang="scss" scoped>
