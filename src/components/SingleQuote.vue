@@ -1,10 +1,22 @@
 <template>
   <section class="single-quote">
+    <CreateOrUpdateModal v-model="showModal" mode="update" :quote="quote" />
+
     <blockquote>
       <p>{{ quote.quote }}</p>
     </blockquote>
 
     <figcaption>—{{ quote.author }}</figcaption>
+
+    <section class="actions">
+      <BButton
+        icon-right="pencil"
+        type="is-primary"
+        @click="showModal = true"
+      />
+
+      <BButton icon-right="delete" type="is-danger" />
+    </section>
   </section>
 </template>
 
@@ -12,10 +24,18 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 // Types
 import { Quote } from "@/types/quote";
+// Components
+import CreateOrUpdateModal from "@/components/CreateOrUpdateModal.vue";
 
-@Component()
+@Component({
+  components: {
+    CreateOrUpdateModal,
+  },
+})
 export default class SingleQuote extends Vue {
   @Prop({ required: true, type: Object }) readonly quote: Quote;
+
+  showModal = false;
 }
 </script>
 
@@ -30,6 +50,14 @@ export default class SingleQuote extends Vue {
 
   figcaption {
     text-align: end;
+  }
+
+  .actions {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    justify-content: end;
+    padding-top: 5px;
   }
 }
 </style>

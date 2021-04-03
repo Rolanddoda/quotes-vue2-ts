@@ -4,7 +4,12 @@
       <header>
         <h1>Create new quote</h1>
 
-        <BButton type="is-primary" :loading="loading" @click="save">
+        <BButton
+          :disabled="!doesValidationPass"
+          type="is-primary"
+          :loading="loading"
+          @click="save"
+        >
           Save
         </BButton>
       </header>
@@ -62,8 +67,12 @@ export default class CreateOrUpdateModal extends Vue {
   quoteModel: Quote = { ...this.quote };
   loading = false;
 
+  get doesValidationPass(): boolean {
+    return this.quoteModel.author.trim() && this.quoteModel.quote.trim();
+  }
+
   save(): void {
-    if (!this.quoteModel.author.trim() || !this.quoteModel.quote.trim()) return;
+    if (!this.doesValidationPass) return;
 
     this.loading = true;
 
