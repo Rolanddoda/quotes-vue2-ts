@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <section class="new-quote">
-      <b-button icon-right="plus" type="is-primary">New Quote | </b-button>
-    </section>
-
+    <CreateQuote />
     <QuotesWrapper />
   </div>
 </template>
@@ -13,10 +10,12 @@
 import { Component, Vue } from "vue-property-decorator";
 // Components
 import QuotesWrapper from "@/components/QuotesWrapper.vue";
+import CreateQuote from "@/components/CreateQuote.vue";
 
 @Component({
   components: {
     QuotesWrapper,
+    CreateQuote,
   },
 })
 export default class App extends Vue {}
@@ -25,11 +24,5 @@ export default class App extends Vue {}
 <style lang="scss" scoped>
 #app {
   padding: 25px;
-
-  .new-quote {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-  }
 }
 </style>
