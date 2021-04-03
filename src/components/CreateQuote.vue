@@ -27,5 +27,6 @@ export default class CreateQuote extends Vue {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 1;
 }
 </style>

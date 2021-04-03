@@ -23,7 +23,7 @@ export default new Vuex.Store({
       const quoteIndex = state.quotes.findIndex((q) => q.id === quote.id);
       if (~quoteIndex) state.quotes.splice(quoteIndex, 1, quote);
     },
-    removeQuote: (state, id: string) =>
+    deleteQuote: (state, id: string) =>
       (state.quotes = (state.quotes || []).filter((q) => q.id !== id)),
   },
 
@@ -42,6 +42,10 @@ export default new Vuex.Store({
       return apiTo
         .MODIFY_QUOTE(quote)
         .then(() => commit("updateQuote", { ...quote }));
+    },
+
+    deleteQuote({ commit }, id: string) {
+      return apiTo.DELETE_QUOTE(id).then(() => commit("deleteQuote", id));
     },
   },
 });

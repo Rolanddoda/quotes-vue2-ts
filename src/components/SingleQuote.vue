@@ -10,12 +10,18 @@
 
     <section class="actions">
       <BButton
+        :disabled="isDeleting"
         icon-right="pencil"
         type="is-primary"
         @click="showModal = true"
       />
 
-      <BButton icon-right="delete" type="is-danger" />
+      <BButton
+        :disabled="isDeleting"
+        icon-right="delete"
+        type="is-danger"
+        @click="deleteQuote"
+      />
     </section>
   </section>
 </template>
@@ -36,6 +42,15 @@ export default class SingleQuote extends Vue {
   @Prop({ required: true, type: Object }) readonly quote: Quote;
 
   showModal = false;
+  isDeleting = false;
+
+  deleteQuote(): void {
+    this.isDeleting = true;
+
+    this.$store
+      .dispatch("deleteQuote", this.quote.id)
+      .finally(() => (this.isDeleting = false));
+  }
 }
 </script>
 
