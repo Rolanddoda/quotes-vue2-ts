@@ -27,6 +27,7 @@
 </template>
 
 <script lang="ts">
+// Libraries
 import { Component, Prop, Vue } from "vue-property-decorator";
 // Types
 import { Quote } from "@/types/quote";

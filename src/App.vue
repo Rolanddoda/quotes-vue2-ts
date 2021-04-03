@@ -24,5 +24,30 @@ export default class App extends Vue {}
 <style lang="scss" scoped>
 #app {
   padding: 25px;
+  overflow: auto;
+}
+</style>
+
+<style lang="scss">
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: hidden !important;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow: hidden !important;
+  font-size: 1.6rem !important;
 }
 </style>
