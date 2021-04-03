@@ -6,15 +6,23 @@
 </template>
 
 <script lang="ts">
+import * as apiTo from "@/api";
 import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "./components/HelloWorld.vue";
+import { Quote } from "@/types/quote";
 
 @Component({
   components: {
     HelloWorld,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  quotes: Quote[] = [];
+
+  created(): void {
+    apiTo.GET_QUOTES().then(({ data }) => (this.quotes = data));
+  }
+}
 </script>
 
 <style lang="scss">
