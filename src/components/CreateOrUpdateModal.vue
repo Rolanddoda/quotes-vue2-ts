@@ -55,31 +55,35 @@ const emptyQuote: Quote = {
   quote: "",
 };
 
-@Component()
+@Component
 export default class CreateOrUpdateModal extends Vue {
   @Prop({ type: Object, default: () => ({ ...emptyQuote }) })
-  readonly quote: Quote;
+  readonly quote!: Quote;
   @Prop({
     type: String,
     required: true,
     validator: (value: string): boolean => ["create", "update"].includes(value),
   })
-  readonly mode: Mode;
+  readonly mode!: Mode;
 
   @VModel()
-  isOpen: boolean;
+  isOpen!: boolean;
 
   validationMessage = "This field is required";
-  quoteModel: Quote = { ...this.quote };
+  quoteModel: Quote = { ...emptyQuote };
   loading = false;
 
   get doesValidationPass(): boolean {
-    return this.quoteModel.author.trim() && this.quoteModel.quote.trim();
+    return !!this.quoteModel.author.trim() && !!this.quoteModel.quote.trim();
   }
 
   @Watch("value")
   valueChanged(newVal: boolean): void {
     if (newVal) this.quoteModel = { ...this.quote };
+  }
+
+  created(): void {
+    this.quoteModel = { ...this.quote };
   }
 
   save(): void {

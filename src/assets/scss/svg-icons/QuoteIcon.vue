@@ -33,9 +33,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Component({})
+@Component
 export default class QuoteIcon extends Vue {
-  @Prop({ default: 48, type: Number }) readonly size: number;
+  @Prop({ default: 48, type: Number }) readonly size!: number;
 }
 </script>
 

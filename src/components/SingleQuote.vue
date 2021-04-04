@@ -60,8 +60,8 @@ import QuoteIcon from "@/assets/scss/svg-icons/QuoteIcon.vue";
   },
 })
 export default class SingleQuote extends Vue {
-  @Prop({ required: true, type: Object }) readonly quote: Quote;
-  @Prop({ required: true, type: Number }) readonly index: number;
+  @Prop({ required: true, type: Object }) readonly quote!: Quote;
+  @Prop({ required: true, type: Number }) readonly index!: number;
 
   showModal = false;
   isDeleting = false;

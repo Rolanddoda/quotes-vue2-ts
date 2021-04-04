@@ -16,7 +16,7 @@
 // Libraries
 import { Component, Vue } from "vue-property-decorator";
 
-@Component()
+@Component
 export default class NoDataIcon extends Vue {}
 </script>
 
