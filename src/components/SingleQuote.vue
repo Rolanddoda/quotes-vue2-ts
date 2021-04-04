@@ -17,6 +17,7 @@
 
       <section class="actions">
         <BButton
+          tabindex="1"
           class="bg-green-gradient"
           :disabled="isDeleting"
           icon-right="pencil"
@@ -25,6 +26,7 @@
         />
 
         <BButton
+          tabindex="1"
           class="bg-orange-gradient"
           :disabled="isDeleting"
           icon-right="delete"
@@ -81,7 +83,8 @@ export default class SingleQuote extends Vue {
   animation: fadeInScaleIn 0.6s cubic-bezier(0.65, 0, 0.35, 1) both;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     filter: drop-shadow(var(--shadow-2));
     transform: scale(1.009);
 
@@ -105,6 +108,11 @@ export default class SingleQuote extends Vue {
 
       + button {
         top: 50px;
+      }
+
+      &:hover,
+      &:focus {
+        font-size: calc(var(--size-7) + 0.05rem);
       }
     }
   }

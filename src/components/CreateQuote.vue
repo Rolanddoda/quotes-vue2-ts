@@ -2,7 +2,11 @@
   <div class="create-quote">
     <CreateOrUpdateModal v-model="showModal" mode="create" />
 
-    <button class="animated-btn text-subtitle-1" @click="showModal = true">
+    <button
+      tabindex="1"
+      class="animated-btn text-subtitle-1"
+      @click="showModal = true"
+    >
       New Quote
     </button>
   </div>
