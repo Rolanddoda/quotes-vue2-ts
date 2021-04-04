@@ -4,13 +4,12 @@ import {
   isDevelopment,
   getQuotesFromLS,
 } from "@/api/utils";
-import { Quote } from "@/types/quote";
 
 /**
  * @description DELETE /quotes/:id
  * @returns {AxiosResponse} data: string
  */
-const BE_DELETE_QUOTE = (quoteId: string): Promise<AxiosResponse<Quote[]>> =>
+const BE_DELETE_QUOTE = (quoteId: string): Promise<AxiosResponse<string>> =>
   request.delete(`/quotes/${quoteId}`);
 
 /**
