@@ -23,8 +23,17 @@ export default class App extends Vue {}
 
 <style lang="scss" scoped>
 #app {
-  padding: 25px;
+  padding: var(--size-5);
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--orange-gradient);
+  }
 }
 </style>
 
