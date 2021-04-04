@@ -5,6 +5,7 @@
         <h1>Create new quote</h1>
 
         <BButton
+          class="bg-green-gradient"
           :disabled="!doesValidationPass"
           type="is-primary"
           :loading="loading"
@@ -17,19 +18,24 @@
       <div class="fields">
         <BField ref="authorField" label="Author">
           <BInput
+            icon="account"
+            placeholder="Author name"
             v-model.trim="quoteModel.author"
             required
             :validation-message="validationMessage"
+            @keyup.native.enter="save"
           />
         </BField>
 
         <BField label="Quote">
           <BInput
+            placeholder="Quote"
             v-model.trim="quoteModel.quote"
             required
             :validation-message="validationMessage"
             maxlength="229"
             type="textarea"
+            @keyup.native.enter="save"
           />
         </BField>
       </div>
@@ -125,7 +131,13 @@ export default class CreateOrUpdateModal extends Vue {
 <style lang="scss">
 .modal-content {
   width: 90% !important;
-  padding: 25px;
-  background: white;
+  padding: var(--size-4);
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: var(--white-1);
+  border-radius: var(--size-7);
+
+  label {
+    color: var(--white-1);
+  }
 }
 </style>

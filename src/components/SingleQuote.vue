@@ -2,7 +2,7 @@
   <div class="single-quote">
     <CreateOrUpdateModal v-model="showModal" mode="update" :quote="quote" />
 
-    <section class="quote-card bg-dark-gradient shadow-1">
+    <section class="quote-card bg-dark-gradient">
       <blockquote>
         <p class="text-subtitle-1 text-white-1">{{ quote.quote }}</p>
       </blockquote>
@@ -70,10 +70,11 @@ export default class SingleQuote extends Vue {
   grid-template-rows: 1fr auto;
   padding: var(--size-6);
   border-radius: var(--size-7);
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  filter: drop-shadow(var(--shadow-1));
+  transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: var(--shadow-2);
+    filter: drop-shadow(var(--shadow-2));
     transform: scale(1.009);
 
     .actions button {
@@ -92,7 +93,7 @@ export default class SingleQuote extends Vue {
       right: -15px;
       top: 15px;
       transform: scale(0);
-      transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+      transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 
       + button {
         top: 50px;

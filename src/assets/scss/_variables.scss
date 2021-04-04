@@ -91,7 +91,7 @@ $orange-gradient: linear-gradient(359.68deg, #F28D61 0.23%, #F2C787 91.92%, #FDD
   --size-7: #{$size-7};
 
   --shadow-1: -2px -2px 0 #{$primary-1};
-  --shadow-2: -4px -4px 10px #{$primary-1};
+  --shadow-2: -4px -4px 5px #{$primary-1};
 }
 
 .shadow-1 { box-shadow: var(--shadow-1); }
