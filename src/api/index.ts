@@ -1,43 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { Quote } from "@/types/quote";
-
-const request: AxiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
-});
-
-/**
- * @description GET /quotes
- * @returns {AxiosResponse} data: Quote[]
- */
-export const GET_QUOTES = (): Promise<AxiosResponse<Quote[]>> =>
-  request.get("/quotes");
-
-/**
- * @description POST /quotes
- * @returns {AxiosResponse} data: { id: string } (id of the created quote)
- */
-export const CREATE_QUOTE = (
-  quote: Quote
-): Promise<AxiosResponse<{ id: string }>> => request.post("/quotes", quote);
-
-/**
- * @description GET /quotes/:id
- * @returns {AxiosResponse} data: Quote
- */
-export const GET_QUOTE = (quoteId: string): Promise<AxiosResponse<Quote>> =>
-  request.get(`/quotes/${quoteId}`);
-
-/**
- * @description PATCH /quotes/:id
- * @returns {AxiosResponse} data: "Ok"
- */
-export const MODIFY_QUOTE = (quote: Quote): Promise<AxiosResponse<string>> =>
-  request.patch(`/quotes/${quote.id}`, quote);
-
-/**
- * @description DELETE /quotes/:id
- * @returns {AxiosResponse} data: string
- */
-export const DELETE_QUOTE = (
-  quoteId: string
-): Promise<AxiosResponse<Quote[]>> => request.delete(`/quotes/${quoteId}`);
+export { GET_QUOTES } from "./get-quotes";
+export { CREATE_QUOTE } from "./create-quote";
+export { MODIFY_QUOTE } from "./modify-quote";
+export { DELETE_QUOTE } from "./delete-quote";

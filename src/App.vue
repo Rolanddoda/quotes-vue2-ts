@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts">
+import { isDevelopment, getQuotesFromLS } from "@/api/utils";
 // Libraries
 import { Component, Vue } from "vue-property-decorator";
 // Components
@@ -18,7 +19,16 @@ import CreateQuote from "@/components/CreateQuote.vue";
     CreateQuote,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  created(): void {
+    if (!isDevelopment) {
+      window.onstorage = () => {
+        const quotes = getQuotesFromLS();
+        localStorage.setItem("quotes", JSON.stringify(quotes));
+      };
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
