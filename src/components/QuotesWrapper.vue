@@ -62,6 +62,7 @@ export default class QuotesWrapper extends Vue {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, var(--size));
+    justify-content: center;
     align-content: start;
     gap: var(--size-4);
   }

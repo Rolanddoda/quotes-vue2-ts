@@ -3,6 +3,7 @@
     <CreateOrUpdateModal v-model="showModal" mode="update" :quote="quote" />
 
     <section
+      tabindex="1"
       class="quote-card bg-dark-gradient"
       :style="{ animationDelay: index * 50 + 'ms' }"
     >
@@ -75,10 +76,12 @@ export default class SingleQuote extends Vue {
   padding: var(--size-6);
   border-radius: var(--size-7);
   filter: drop-shadow(var(--shadow-1));
+  outline: none;
   transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
   animation: fadeInScaleIn 0.6s cubic-bezier(0.65, 0, 0.35, 1) both;
 
-  &:hover {
+  &:hover,
+  &:focus {
     filter: drop-shadow(var(--shadow-2));
     transform: scale(1.009);
 
