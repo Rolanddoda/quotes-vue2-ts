@@ -1,12 +1,14 @@
 <template>
-  <section class="single-quote">
+  <section class="single-quote bg-dark-gradient shadow-1">
     <CreateOrUpdateModal v-model="showModal" mode="update" :quote="quote" />
 
     <blockquote>
-      <p>{{ quote.quote }}</p>
+      <p class="text-subtitle-1 text-white-1">{{ quote.quote }}</p>
     </blockquote>
 
-    <figcaption>—{{ quote.author }}</figcaption>
+    <figcaption class="text-heading-1 text-orange-gradient">
+      —{{ quote.author }}
+    </figcaption>
 
     <section class="actions">
       <BButton
@@ -61,8 +63,14 @@ export default class SingleQuote extends Vue {
   height: var(--size);
   display: grid;
   grid-template-rows: 1fr auto;
-  box-shadow: 0 0 5px black;
   padding: 20px;
+  border-radius: var(--size-7);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: var(--shadow-2);
+    transform: scale(1.009);
+  }
 
   figcaption {
     text-align: end;

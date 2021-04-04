@@ -1,30 +1,4 @@
-// Included below are all the defined variables from Bulma
-// Modify as needed, removing the !default attribute.
-
-// Colors
-
-$black:        hsl(0, 0%, 4%) !default;
-$black-bis:    hsl(0, 0%, 7%) !default;
-$black-ter:    hsl(0, 0%, 14%) !default;
-
-$grey-darker:  hsl(0, 0%, 21%) !default;
-$grey-dark:    hsl(0, 0%, 29%) !default;
-$grey:         hsl(0, 0%, 48%) !default;
-$grey-light:   hsl(0, 0%, 71%) !default;
-$grey-lighter: hsl(0, 0%, 86%) !default;
-
-$white-ter:    hsl(0, 0%, 96%) !default;
-$white-bis:    hsl(0, 0%, 98%) !default;
-$white:        hsl(0, 0%, 100%) !default;
-
-$orange:       hsl(14,  100%, 53%) !default;
-$yellow:       hsl(48,  100%, 67%) !default;
-$green:        hsl(141, 71%,  48%) !default;
-$turquoise:    hsl(171, 100%, 41%) !default;
-$cyan:         hsl(204, 86%,  53%) !default;
-$blue:         hsl(217, 71%,  53%) !default;
-$purple:       hsl(271, 100%, 71%) !default;
-$red:          hsl(348, 100%, 61%) !default;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 
 // Typography
 
@@ -72,81 +46,69 @@ $speed: 86ms !default;
 
 $variable-columns: true !default;
 
+// Custom design system
 
-// The default Bulma derived variables are declared below
+// Colors
 
-$primary: $turquoise !default;
+$primary-1: hsl(182, 79%, 46%);
+.text-primary-1 { color: $primary-1 }
+.bg-primary-1 { background: $primary-1 }
 
-$info: $cyan !default;
-$success: $green !default;
-$warning: $yellow !default;
-$danger: $red !default;
+$white-1: hsl(230, 75%, 98%);
+.text-white-1 { color: $white-1 }
+.bg-white-1 { background: $white-1 }
 
-$light: $white-ter !default;
-$dark: $grey-darker !default;
+$white-2: hsl(225, 29%, 95%);
+.text-white-2 { color: $white-2 }
+.bg-white-2 { background: $white-2 }
 
-// Invert colors
+$green-gradient: linear-gradient(280.79deg, #00828E -34.22%, #9BE1AB 194.17%);
+.text-green-gradient { background: $green-gradient; -webkit-background-clip: text; -webkit-text-fill-color: transparent }
+.bg-green-gradient { background: $green-gradient }
 
-$orange-invert: findColorInvert($orange) !default;
-$yellow-invert: findColorInvert($yellow) !default;
-$green-invert: findColorInvert($green) !default;
-$turquoise-invert: findColorInvert($turquoise) !default;
-$cyan-invert: findColorInvert($cyan) !default;
-$blue-invert: findColorInvert($blue) !default;
-$purple-invert: findColorInvert($purple) !default;
-$red-invert: findColorInvert($red) !default;
+$dark-gradient: linear-gradient(2.18deg, #100F0F -56.19%, #383E56 106.08%);
+.text-dark-gradient { background: $dark-gradient; -webkit-background-clip: text; -webkit-text-fill-color: transparent }
+.bg-dark-gradient { background: $dark-gradient }
 
-$primary-invert: $turquoise-invert !default;
-$info-invert: $cyan-invert !default;
-$success-invert: $green-invert !default;
-$warning-invert: $yellow-invert !default;
-$danger-invert: $red-invert !default;
-$light-invert: $dark !default;
-$dark-invert: $light !default;
+$orange-gradient: linear-gradient(359.68deg, #F28D61 0.23%, #F2C787 91.92%, #FDDEB0 99.68%);
+.text-orange-gradient { background: $orange-gradient; -webkit-background-clip: text; -webkit-text-fill-color: transparent }
+.bg-orange-gradient { background: $orange-gradient }
 
-// General colors
+:root {
+  --primary-1: #{$primary-1};
+  --white-1: #{$white-1};
+  --white-2: #{$white-2};
+  --green-gradient: #{$green-gradient};
+  --dark-gradient: #{$dark-gradient};
+  --orange-gradient: #{$orange-gradient};
 
-$background: $white-ter !default;
+  --size-1: #{$size-1};
+  --size-2: #{$size-2};
+  --size-3: #{$size-3};
+  --size-4: #{$size-4};
+  --size-5: #{$size-5};
+  --size-6: #{$size-6};
+  --size-7: #{$size-7};
 
-$border: $grey-lighter !default;
-$border-hover: $grey-light !default;
+  --shadow-1: -2px -2px 0 #{$primary-1};
+  --shadow-2: -4px -4px 10px #{$primary-1};
+}
 
-// Text colors
-
-$text: $grey-dark !default;
-$text-invert: findColorInvert($text) !default;
-$text-light: $grey !default;
-$text-strong: $grey-darker !default;
-
-// Code colors
-
-$code: $red !default;
-$code-background: $background !default;
-
-$pre: $text !default;
-$pre-background: $background !default;
-
-// Link colors
-
-$link: $blue !default;
-$link-invert: $blue-invert !default;
-$link-visited: $purple !default;
-
-$link-hover: $grey-darker !default;
-$link-hover-border: $grey-light !default;
-
-$link-focus: $grey-darker !default;
-$link-focus-border: $blue !default;
-
-$link-active: $grey-darker !default;
-$link-active-border: $grey-dark !default;
+.shadow-1 { box-shadow: var(--shadow-1); }
+.shadow-2 { box-shadow: var(--shadow-2); }
 
 // Typography
 
-$family-primary: $family-sans-serif !default;
-$family-code: $family-monospace !default;
+@mixin poppins ($size, $line-height, $font-weight) {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+}
 
-$size-small: $size-7 !default;
-$size-normal: $size-6 !default;
-$size-medium: $size-5 !default;
-$size-large: $size-4 !default;
+.text-heading-1 { @include poppins($size: 14px, $line-height: 24px, $font-weight: 600); }
+.text-heading-2 { @include poppins($size: 12px, $line-height: 24px, $font-weight: bold); }
+
+.text-subtitle-1 { @include poppins($size: 14px, $line-height: 24px, $font-weight: normal); }
+.text-subtitle-2 { @include poppins($size: 18px, $line-height: 40px, $font-weight: normal); }
