@@ -7,8 +7,14 @@
       class="quote-card bg-dark-gradient"
       :style="{ animationDelay: index * 50 + 'ms' }"
     >
+      <div class="quote-icon">
+        <QuoteIcon />
+      </div>
+
       <blockquote>
-        <p class="text-subtitle-1 text-white-1">{{ quote.quote }}</p>
+        <p class="text-subtitle-1 text-white-1">
+          {{ quote.quote }}
+        </p>
       </blockquote>
 
       <figcaption class="text-heading-1 text-orange-gradient">
@@ -45,10 +51,12 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import { Quote } from "@/types/quote";
 // Components
 import CreateOrUpdateModal from "@/components/CreateOrUpdateModal.vue";
+import QuoteIcon from "@/assets/scss/svg-icons/QuoteIcon.vue";
 
 @Component({
   components: {
     CreateOrUpdateModal,
+    QuoteIcon,
   },
 })
 export default class SingleQuote extends Vue {
@@ -74,7 +82,7 @@ export default class SingleQuote extends Vue {
   width: var(--size);
   height: var(--size);
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   padding: var(--size-6);
   border-radius: var(--size-7);
   filter: drop-shadow(var(--shadow-1));
@@ -91,6 +99,15 @@ export default class SingleQuote extends Vue {
     .actions button {
       transform: scale(1);
     }
+  }
+
+  .quote-icon {
+    display: grid;
+    justify-content: center;
+  }
+
+  blockquote p {
+    text-align: center;
   }
 
   figcaption {

@@ -29,7 +29,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { Quote } from "@/types/quote";
 // Components
 import SingleQuote from "@/components/SingleQuote.vue";
-import NoDataIcon from "@/components/NoDataIcon";
+import NoDataIcon from "@/assets/scss/svg-icons/NoDataIcon.vue";
 
 @Component({
   components: {
