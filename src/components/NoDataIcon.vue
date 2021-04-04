@@ -26,7 +26,7 @@ svg {
 
   > path {
     fill-opacity: 0;
-    stroke: indigo;
+    stroke: var(--primary-1);
     stroke-width: 6px;
     stroke-dasharray: 1400;
     stroke-dashoffset: 1400;

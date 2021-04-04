@@ -4,7 +4,9 @@
 
     <div v-else-if="!quotes.length" class="no-data">
       <NoDataIcon />
-      <h3>No quotes! Go and create some!</h3>
+      <div class="text-heading-1 text-white-1">
+        No quotes! Go and create some!
+      </div>
     </div>
 
     <div class="quotes" v-else>
@@ -54,7 +56,7 @@ export default class QuotesWrapper extends Vue {
     display: grid;
     grid-template-columns: repeat(auto-fit, var(--size));
     align-content: start;
-    gap: 25px;
+    gap: var(--size-4);
   }
 
   .loading {
