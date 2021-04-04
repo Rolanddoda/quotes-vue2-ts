@@ -1,5 +1,5 @@
 <template>
-  <BModal v-model="isOpen">
+  <BModal v-model="isOpen" custom-class="__custom-modal">
     <div class="modal-content-wrapper">
       <header>
         <h1>Create new quote</h1>
@@ -129,15 +129,22 @@ export default class CreateOrUpdateModal extends Vue {
 </style>
 
 <style lang="scss">
-.modal-content {
-  width: 90% !important;
-  padding: var(--size-4);
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: var(--white-1);
-  border-radius: var(--size-7);
-
-  label {
+.__custom-modal {
+  .modal-content {
+    width: 90% !important;
+    padding: var(--size-4);
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: var(--white-1);
+    border-radius: var(--size-7);
+
+    label {
+      color: var(--white-1);
+    }
+  }
+
+  .modal-background {
+    background-color: unset;
+    backdrop-filter: blur(2px);
   }
 }
 </style>
