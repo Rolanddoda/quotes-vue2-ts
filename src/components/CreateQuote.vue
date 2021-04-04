@@ -2,7 +2,9 @@
   <div class="create-quote">
     <CreateOrUpdateModal v-model="showModal" mode="create" />
 
-    <button class="animated-btn" @click="showModal = true">New Quote</button>
+    <button class="animated-btn text-subtitle-1" @click="showModal = true">
+      New Quote
+    </button>
   </div>
 </template>
 
@@ -24,21 +26,24 @@ export default class CreateQuote extends Vue {
 <style lang="scss" scoped>
 .create-quote {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: var(--size-6);
+  right: var(--size-6);
   z-index: 1;
+  background: var(--white-1);
+  line-height: initial;
 
   .animated-btn {
     --duration-timing: 0.4s ease-in-out;
 
     position: relative;
     padding: 8px 35px;
-    border: 2px solid #1c1c22;
+    border: 2px solid var(--primary-1);
     background: transparent;
     overflow: hidden;
     transition: color var(--duration-timing);
     cursor: pointer;
     font-size: 16px;
+    line-height: initial;
 
     &:before {
       content: "";
@@ -47,14 +52,14 @@ export default class CreateQuote extends Vue {
       height: 100%;
       top: 0;
       left: 0;
-      background: #00c4a7;
+      background: var(--primary-1);
       transform: translateX(-100%);
       transition: transform var(--duration-timing);
       z-index: -1;
     }
 
     &:hover {
-      color: white;
+      color: var(--white-1);
 
       &:before {
         transform: translateX(0);
