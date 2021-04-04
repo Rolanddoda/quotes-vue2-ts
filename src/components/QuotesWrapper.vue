@@ -1,6 +1,8 @@
 <template>
   <div class="quotes-wrapper">
-    <div v-if="!quotes" class="loading">Loading...</div>
+    <div v-if="!quotes" class="loading text-subtitle-2 text-white-1">
+      Loading quotes...
+    </div>
 
     <div v-else-if="!quotes.length" class="no-data">
       <NoDataIcon />
@@ -10,7 +12,12 @@
     </div>
 
     <div class="quotes" v-else>
-      <SingleQuote v-for="quote of quotes" :key="quote.id" :quote="quote" />
+      <SingleQuote
+        v-for="(quote, index) of quotes"
+        :key="quote.id"
+        :quote="quote"
+        :index="index"
+      />
     </div>
   </div>
 </template>

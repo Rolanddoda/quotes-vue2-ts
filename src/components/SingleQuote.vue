@@ -2,7 +2,10 @@
   <div class="single-quote">
     <CreateOrUpdateModal v-model="showModal" mode="update" :quote="quote" />
 
-    <section class="quote-card bg-dark-gradient">
+    <section
+      class="quote-card bg-dark-gradient"
+      :style="{ animationDelay: index * 50 + 'ms' }"
+    >
       <blockquote>
         <p class="text-subtitle-1 text-white-1">{{ quote.quote }}</p>
       </blockquote>
@@ -47,6 +50,7 @@ import CreateOrUpdateModal from "@/components/CreateOrUpdateModal.vue";
 })
 export default class SingleQuote extends Vue {
   @Prop({ required: true, type: Object }) readonly quote: Quote;
+  @Prop({ required: true, type: Number }) readonly index: number;
 
   showModal = false;
   isDeleting = false;
@@ -72,6 +76,7 @@ export default class SingleQuote extends Vue {
   border-radius: var(--size-7);
   filter: drop-shadow(var(--shadow-1));
   transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
+  animation: fadeInScaleIn 0.6s cubic-bezier(0.65, 0, 0.35, 1) both;
 
   &:hover {
     filter: drop-shadow(var(--shadow-2));
@@ -99,6 +104,17 @@ export default class SingleQuote extends Vue {
         top: 50px;
       }
     }
+  }
+}
+
+@keyframes fadeInScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
   }
 }
 </style>
